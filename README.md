@@ -80,16 +80,16 @@ For each pcap entry filtered the follwing function is called :
   Then for each packet selected, the S7 pdu is extracted and depending of the type (request or answer) and the function code concerned
   (Memory Write, Memory read) the corresponding method are called to provide full decoding of the content :
 
-#### func traceS7MemoryWriteRequest( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) {
+#### func traceS7MemoryWriteRequest( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) 
    Extract as much as possible information of the S7 PDU about memory area and address being writted and print it on screen 
 
-#### func traceS7MemoryReadRequest( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) {
+#### func traceS7MemoryReadRequest( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) 
    Extract as much as possible information of the S7 PDU about memory area and address being read and print it on screen 
 
-#### func traceS7MemoryWriteResponse( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) {
+#### func traceS7MemoryWriteResponse( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) 
    Extract and display the result code of the write operation. 0xFF means sucess 
 
-#### func traceS7MemoryReadResponse( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) {
+#### func traceS7MemoryReadResponse( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) 
    Extract and display the result code of the read operation. 0xFF means sucess and Display the value read
 
 
