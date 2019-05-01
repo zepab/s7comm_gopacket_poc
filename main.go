@@ -9,11 +9,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	//"io"
 	"log"
 	"os"
-	//"strings"
-	"time"
 	"encoding/binary"
 
 	"github.com/google/gopacket"
@@ -26,12 +23,6 @@ var fname = flag.String("r", "", "Filename to read from")
 var fport = flag.String("p", "102", "TCP port handling S7comm traffic")
 
 var tcpLayer layers.TCP
-
-var lastTS time.Time
-var lastSend time.Time
-
-var start time.Time
-var bytesSent int
 
 func traceS7MemoryWriteRequest( flow gopacket.Flow,requestId int, itemCount uint8, data []byte, itemOffset uint16, dataOffset uint16 ) {
 	//fmt.Println(flow," -> requestID=", requestId, ": Handling a Request to Write a Variable", "itemOffset=", itemOffset, "dataOffset=", dataOffset)
@@ -119,7 +110,7 @@ func traceS7MemoryWriteResponse( flow gopacket.Flow,requestId int, itemCount uin
 		returnCode := uint8(data[dataOffset])
 		//TODO try to find write ack answer with more than one item as it seems that only the Return Code is present in the frame
 		dataOffset=dataOffset+1
-		fmt.Printf("%v|requestID=%v|WRTIE ANS[%d]|result(%#x)\n",flow,requestId,i,returnCode )
+		fmt.Printf("%v|requestID=%v|WRITE ANS[%d]|result(%#x)\n",flow,requestId,i,returnCode )
 	}	
 }
 
